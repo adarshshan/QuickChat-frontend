@@ -46,7 +46,7 @@ const Signup = () => {
                     "Content-type": "application/json",
                 },
             };
-            const { data } = await axios.post("/api/user", {
+            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user`, {
                 name,
                 email,
                 password,
