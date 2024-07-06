@@ -46,7 +46,8 @@ const Signup = () => {
                     "Content-type": "application/json",
                 },
             };
-            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user`, {
+            console.log(process.env.REACT_APP_BACKEND_ENDPOINT); console.log('this is the env data');
+            const { data } = await axios.post(`https://quickchat-backend-lcr5.onrender.com/api/user`, {
                 name,
                 email,
                 password,
@@ -66,14 +67,14 @@ const Signup = () => {
                 localStorage.setItem("userInfo", JSON.stringify(data));
                 setPicLoading(false);
                 navigate("/chats");
-            }else{
+            } else {
                 toast({
                     title: "Registration Failed",
                     status: "error",
                     duration: 5000,
                     isClosable: true,
                     position: "bottom",
-                }); 
+                });
             }
 
         } catch (error) {
