@@ -11,7 +11,7 @@ import animationData from '../animations/typing.json';
 import ScrollableChat from './ScrollableChat'
 import io from 'socket.io-client'
 
-const ENDPOINT = 'http://localhost:8000'
+const ENDPOINT = 'https://quickchat-backend-lcr5.onrender.com'
 var socket, selectedChatCompare;
 
 
@@ -95,7 +95,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             }
         })
     })
-    console.log(notification, '...........................');
     const sendMessage = async (event) => {
         if (event.key === "Enter" && newMessage) {
             try {
