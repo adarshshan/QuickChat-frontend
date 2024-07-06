@@ -11,7 +11,7 @@ import animationData from '../animations/typing.json';
 import ScrollableChat from './ScrollableChat'
 import io from 'socket.io-client'
 
-const ENDPOINT = 'https://quickchat-backend-lcr5.onrender.com'
+const ENDPOINT = process.env.REACT_APP_BACKEND_ENDPOINT
 var socket, selectedChatCompare;
 
 
@@ -57,7 +57,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             }
 
             setLoading(true);
-            const { data } = await axios.get(`/api/messages/${selectedChat._id}`, config);
+            const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/messages/${selectedChat._id}`, config);
             if (data) {
                 setMessages(data);
                 setLoading(false);
@@ -105,7 +105,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     }
                 }
                 setNewMessage("");
-                const { data } = await axios.post('/api/messages', {
+                const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/messages`, {
                     content: newMessage,
                     chatId: selectedChat._id,
                 }, config);

@@ -46,8 +46,7 @@ const Signup = () => {
                     "Content-type": "application/json",
                 },
             };
-            console.log(process.env.REACT_APP_BACKEND_ENDPOINT); console.log('this is the env data');
-            const { data } = await axios.post(`https://quickchat-backend-lcr5.onrender.com/api/user`, {
+            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user`, {
                 name,
                 email,
                 password,
@@ -115,7 +114,6 @@ const Signup = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     setPic(data.url.toString());
-                    console.log(data.url.toString());
                     setPicLoading(false);
                 })
                 .catch((err) => {

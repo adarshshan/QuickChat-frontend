@@ -26,8 +26,7 @@ const GroupChatModel = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`/api/user?search=${query}`, config);
-            console.log(data);
+            const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user?search=${query}`, config);
             setLoading(false);
             if (data) setSearchResult(data);
             else toast({ title: 'something went wrong', description: "Failed to load the search results", status: 'error', duration: 4000, isClosable: true, position: "bottom-left" });
@@ -60,7 +59,7 @@ const GroupChatModel = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(`/api/chats/group`,
+            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/chats/group`,
                 {
                     name: groupChatName,
                     users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -72,8 +71,6 @@ const GroupChatModel = ({ children }) => {
             setSearch('');
             onClose()
             if (data) {
-                console.log(data);
-                console.log('this is the data from handlesubmit');
                 setChats([data, ...chats]);
                 toast({
                     title: "New Group Chat Created!",

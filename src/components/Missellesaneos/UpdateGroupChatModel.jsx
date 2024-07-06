@@ -46,8 +46,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get(`/api/user?search=${search}`, config);
-            console.log(data);
+            const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user?search=${search}`, config);
             setLoading(false);
             setSearchResult(data);
         } catch (error) {
@@ -73,15 +72,13 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(`/api/chats/rename`,
+            const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/chats/rename`,
                 {
                     chatId: selectedChat._id,
                     chatName: groupChatName,
                 },
                 config
             );
-
-            console.log(data._id);
             // setSelectedChat("");
             setSelectedChat(data);
             setFetchAgain(!fetchAgain);
@@ -130,7 +127,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(`/api/chats/groupadd`,
+            const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/chats/groupadd`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
@@ -174,7 +171,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(`/api/chats/groupremove`,
+            const { data } = await axios.put(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/chats/groupremove`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
