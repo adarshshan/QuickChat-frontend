@@ -160,7 +160,11 @@ const SideDrawer = () => {
                                 placeholder="Search by name or email"
                                 mr={2}
                                 value={search}
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={(e) => {
+                                    setSearch(e.target.value);
+                                    handleSearch()
+                                }
+                                }
                             />
                             <Button onClick={handleSearch}>Go</Button>
                         </Box>
