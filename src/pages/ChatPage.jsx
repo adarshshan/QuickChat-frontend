@@ -7,13 +7,17 @@ import ChatBox from '../components/ChatBox';
 
 const ChatPage = () => {
     const [fetchAgain, setFetchAgain] = useState();
+    const [isData, setIsdata] = useState(false);
     const { user } = ChatState();
+    useEffect(() => {
+        if (user) setIsdata(true);
+    }, [isData])
     return (
         <div style={{ width: "100%" }}>
-            {user && <SideDrawer />}
+            {isData && <SideDrawer />}
             <Box display="flex" justifyContent="space-between" w="100%" h="91.5vh" p="10px">
-                {user && <Mychats fetchAgain={fetchAgain}/>}
-                {user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
+                {isData && <Mychats fetchAgain={fetchAgain} />}
+                {isData && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
             </Box>
         </div>
     )
