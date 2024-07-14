@@ -1,6 +1,7 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState } from 'react'
+import { GrFormView, GrFormViewHide } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -85,7 +86,7 @@ const Login = () => {
                     />
                     <InputRightElement width="4.5rem">
                         <Button h="1.75rem" size="sm" onClick={handleClick}>
-                            {show ? "Hide" : "Show"}
+                            {show ? <GrFormViewHide /> : <GrFormView />}
                         </Button>
                     </InputRightElement>
                 </InputGroup>

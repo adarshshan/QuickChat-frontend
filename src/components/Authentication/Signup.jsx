@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, V
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { GrFormView, GrFormViewHide } from "react-icons/gr";
 
 const Signup = () => {
     const [show, setShow] = useState(false);
@@ -160,7 +161,7 @@ const Signup = () => {
                     />
                     <InputRightElement width="4.5rem">
                         <Button h="1.75rem" size="sm" onClick={handleClick}>
-                            {show ? "Hide" : "Show"}
+                            {show ? <GrFormViewHide /> : <GrFormView />}
                         </Button>
                     </InputRightElement>
                 </InputGroup>
@@ -175,7 +176,7 @@ const Signup = () => {
                     />
                     <InputRightElement width="4.5rem">
                         <Button h="1.75rem" size="sm" onClick={handleClick}>
-                            {show ? "Hide" : "Show"}
+                            {show ? <GrFormViewHide /> : <GrFormView />}
                         </Button>
                     </InputRightElement>
                 </InputGroup>
