@@ -34,11 +34,10 @@ const Login = () => {
                 },
             };
 
-            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user/login`,
+            const result = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user/login`,
                 { email, password },
                 config
             );
-            console.log(data); console.log('this will be the login data')
 
             toast({
                 title: "Login Successful",
@@ -48,7 +47,7 @@ const Login = () => {
                 position: "bottom",
             });
             // setUser(data);
-            localStorage.setItem("userInfo", JSON.stringify(data));
+            localStorage.setItem("userInfo", JSON.stringify(result.data));
             setLoading(false);
             navigate("/chats");
         } catch (error) {

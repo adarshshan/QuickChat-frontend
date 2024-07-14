@@ -1,10 +1,21 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ChatState } from '../context/ChatProvider'
 import SingleChat from './SingleChat';
+import { useNavigate } from 'react-router-dom';
 
 const ChatBox = ({ fetchAgain, setFetchAgain }) => {
-    const { selectedChat } = ChatState();
+    const { selectedChat, setUser } = ChatState();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        setUser(userInfo);
+
+        if (!userInfo) navigate("/");
+    }, []);
+
     return (
         <Box display={{ base: selectedChat ? 'flex' : 'none', md: "flex" }}
             alignItems="center"

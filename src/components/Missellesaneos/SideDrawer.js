@@ -48,16 +48,6 @@ const SideDrawer = () => {
                 setLoading(false);
                 setSearchResult(data);
             }
-            if (!search.length) {
-                toast({
-                    title: "Please Enter something in search",
-                    status: "warning",
-                    duration: 5000,
-                    isClosable: true,
-                    position: "top-left",
-                });
-                return;
-            }
         } catch (error) {
             console.log(error);
         }

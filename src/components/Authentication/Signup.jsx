@@ -9,11 +9,11 @@ const Signup = () => {
     const toast = useToast();
     const navigate = useNavigate();
 
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [confirmpassword, setConfirmpassword] = useState();
-    const [password, setPassword] = useState();
-    const [pic, setPic] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [confirmpassword, setConfirmpassword] = useState('');
+    const [password, setPassword] = useState('');
+    const [pic, setPic] = useState('');
     const [picLoading, setPicLoading] = useState(false);
 
     const submitHandler = async () => {
@@ -46,7 +46,7 @@ const Signup = () => {
                     "Content-type": "application/json",
                 },
             };
-            const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user`, {
+            const result = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/api/user`, {
                 name,
                 email,
                 password,
@@ -54,8 +54,8 @@ const Signup = () => {
             },
                 config
             );
-            console.log(data);
-            if (data) {
+            console.log(result);
+            if (result.data) {
                 toast({
                     title: "Registration Successful",
                     status: "success",
@@ -63,7 +63,7 @@ const Signup = () => {
                     isClosable: true,
                     position: "bottom",
                 });
-                localStorage.setItem("userInfo", JSON.stringify(data));
+                localStorage.setItem("userInfo", JSON.stringify(result.data));
                 setPicLoading(false);
                 navigate("/chats");
             } else {
