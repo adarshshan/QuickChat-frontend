@@ -3,8 +3,11 @@ import { Box, Container, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@
 import Login from '../components/Authentication/Login'
 import Signup from '../components/Authentication/Signup'
 
+export const handleContextMenu = (event) => {
+  event.preventDefault();
+}
 const HomePage = () => {
-  
+
   return (
     <Container maxW="xl" centerContent>
       <Box
@@ -23,7 +26,7 @@ const HomePage = () => {
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em">
+          <TabList mb="1em" onContextMenu={handleContextMenu}>
             <Tab>Login</Tab>
             <Tab>Sign Up</Tab>
           </TabList>

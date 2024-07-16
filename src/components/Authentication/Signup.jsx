@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { GrFormView, GrFormViewHide } from "react-icons/gr";
+import { handleContextMenu } from '../../pages/HomePage';
 
 const Signup = () => {
     const [show, setShow] = useState(false);
@@ -135,7 +136,7 @@ const Signup = () => {
     };
 
     return (
-        <VStack spacing="5px">
+        <VStack spacing="5px" onContextMenu={handleContextMenu}>
             <FormControl id="first-name" isRequired>
                 <FormLabel>Name</FormLabel>
                 <Input
