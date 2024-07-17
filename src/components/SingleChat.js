@@ -115,6 +115,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 socket.emit("new message", data.message);
 
                 setMessages([...messages, data.message]);
+                setFetchAgain(!fetchAgain);
             } catch (error) {
                 console.log(error)
                 toast({

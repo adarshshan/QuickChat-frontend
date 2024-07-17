@@ -3,8 +3,8 @@ import { ChatState } from '../../context/ChatProvider';
 import { Toast } from '@chakra-ui/react';
 import axios from 'axios';
 
-const RenderProps = ({ render }) => {
-    const { chats, setChats,user } = ChatState();
+const RenderProps = ({ render, fetchAgain }) => {
+    const { chats, setChats, user } = ChatState();
     const fetchChats = async () => {
         try {
             const config = {
@@ -29,7 +29,7 @@ const RenderProps = ({ render }) => {
     };
     useEffect(() => {
         fetchChats();
-    }, [])
+    }, [fetchAgain])
     return render(chats);
 }
 

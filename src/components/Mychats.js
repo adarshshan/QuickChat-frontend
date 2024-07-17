@@ -57,7 +57,7 @@ const Mychats = ({ fetchAgain }) => {
                 h="100%"
                 borderRadius="lg"
                 overflowY="hidden">
-                <RenderProps render={(data) => (
+                <RenderProps fetchAgain={fetchAgain} render={(data) => (
                     <>
                         {data ? (
                             <Stack overflowY="scroll">
